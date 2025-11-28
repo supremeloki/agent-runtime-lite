@@ -33,3 +33,5 @@ class ToolResult:
     def as_observation(self) -> str:
         status = "ok" if self.success else "error"
         return f"[{self.tool}/{status}] {self.output}"
+
+
