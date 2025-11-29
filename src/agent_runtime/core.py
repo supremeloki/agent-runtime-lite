@@ -35,3 +35,5 @@ class ToolResult:
         return f"[{self.tool}/{status}] {self.output}"
 
 
+class Tool(Protocol):
+    name: str
