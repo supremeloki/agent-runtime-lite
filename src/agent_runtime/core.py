@@ -37,3 +37,4 @@ class ToolResult:
 
 class Tool(Protocol):
     name: str
+
