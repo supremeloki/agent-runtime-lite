@@ -38,3 +38,5 @@ class ToolResult:
 class Tool(Protocol):
     name: str
 
+    def run(self, arguments: dict[str, Any]) -> Any: ...
+
