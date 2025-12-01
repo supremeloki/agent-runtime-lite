@@ -40,3 +40,5 @@ class Tool(Protocol):
 
     def run(self, arguments: dict[str, Any]) -> Any: ...
 
+
+class CalculatorTool:
