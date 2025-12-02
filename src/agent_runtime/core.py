@@ -42,3 +42,4 @@ class Tool(Protocol):
 
 
 class CalculatorTool:
+    name = "calculator"
