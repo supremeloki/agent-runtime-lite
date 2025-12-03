@@ -43,3 +43,5 @@ class Tool(Protocol):
 
 class CalculatorTool:
     name = "calculator"
+
+    _OPERATIONS: dict[str, Callable[[float, float], float]] = {
