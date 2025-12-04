@@ -45,3 +45,4 @@ class CalculatorTool:
     name = "calculator"
 
     _OPERATIONS: dict[str, Callable[[float, float], float]] = {
+        "add": lambda a, b: a + b,
