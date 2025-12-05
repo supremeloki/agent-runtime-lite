@@ -50,3 +50,4 @@ class CalculatorTool:
         "multiply": lambda a, b: a * b,
     }
 
+    def run(self, arguments: dict[str, Any]) -> float:
