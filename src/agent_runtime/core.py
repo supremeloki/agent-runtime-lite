@@ -51,3 +51,5 @@ class CalculatorTool:
     }
 
     def run(self, arguments: dict[str, Any]) -> float:
+        operation = arguments.get("op")
+        left = float(arguments.get("a", 0))
