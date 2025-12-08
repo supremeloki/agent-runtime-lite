@@ -56,3 +56,5 @@ class CalculatorTool:
         right = float(arguments.get("b", 0))
         if operation not in self._OPERATIONS:
             raise ValueError(f"unsupported op: {operation!r}")
+        return self._OPERATIONS[operation](left, right)
+
