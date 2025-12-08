@@ -54,3 +54,5 @@ class CalculatorTool:
         operation = arguments.get("op")
         left = float(arguments.get("a", 0))
         right = float(arguments.get("b", 0))
+        if operation not in self._OPERATIONS:
+            raise ValueError(f"unsupported op: {operation!r}")
