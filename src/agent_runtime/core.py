@@ -58,3 +58,4 @@ class CalculatorTool:
             raise ValueError(f"unsupported op: {operation!r}")
         return self._OPERATIONS[operation](left, right)
 
+
