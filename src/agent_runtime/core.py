@@ -59,3 +59,5 @@ class CalculatorTool:
         return self._OPERATIONS[operation](left, right)
 
 
+class MemoryStoreTool:
+    name = "memory"
