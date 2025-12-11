@@ -61,3 +61,4 @@ class CalculatorTool:
 
 class MemoryStoreTool:
     name = "memory"
+
