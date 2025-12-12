@@ -64,3 +64,5 @@ class MemoryStoreTool:
 
     def __init__(self) -> None:
         self._entries: dict[str, str] = {}
+
+    def run(self, arguments: dict[str, Any]) -> str:
