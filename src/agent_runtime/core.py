@@ -62,3 +62,5 @@ class CalculatorTool:
 class MemoryStoreTool:
     name = "memory"
 
+    def __init__(self) -> None:
+        self._entries: dict[str, str] = {}
