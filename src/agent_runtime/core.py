@@ -67,3 +67,5 @@ class MemoryStoreTool:
 
     def run(self, arguments: dict[str, Any]) -> str:
         action = arguments.get("action", "get")
+        key = arguments.get("key", "")
+        if action == "put":
