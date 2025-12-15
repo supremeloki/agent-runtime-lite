@@ -69,3 +69,5 @@ class MemoryStoreTool:
         action = arguments.get("action", "get")
         key = arguments.get("key", "")
         if action == "put":
+            self._entries[key] = str(arguments.get("value", ""))
+            return f"stored:{key}"
