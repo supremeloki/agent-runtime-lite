@@ -74,3 +74,4 @@ class MemoryStoreTool:
         return self._entries.get(key, "")
 
 
+class ToolRegistry:
