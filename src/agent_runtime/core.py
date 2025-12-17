@@ -72,3 +72,5 @@ class MemoryStoreTool:
             self._entries[key] = str(arguments.get("value", ""))
             return f"stored:{key}"
         return self._entries.get(key, "")
+
+
