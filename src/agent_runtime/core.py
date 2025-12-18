@@ -77,3 +77,5 @@ class MemoryStoreTool:
 class ToolRegistry:
     def __init__(self, tools: Sequence[Tool] = ()) -> None:
         self._tools: dict[str, Tool] = {}
+        for tool in tools:
+            self.register(tool)
