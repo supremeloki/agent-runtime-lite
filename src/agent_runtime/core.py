@@ -80,3 +80,5 @@ class ToolRegistry:
         for tool in tools:
             self.register(tool)
 
+    def register(self, tool: Tool) -> "ToolRegistry":
+        if getattr(tool, "name", "") in self._tools:
