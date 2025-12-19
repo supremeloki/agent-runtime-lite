@@ -79,3 +79,4 @@ class ToolRegistry:
         self._tools: dict[str, Tool] = {}
         for tool in tools:
             self.register(tool)
+
