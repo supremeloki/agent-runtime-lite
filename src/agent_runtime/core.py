@@ -82,3 +82,4 @@ class ToolRegistry:
 
     def register(self, tool: Tool) -> "ToolRegistry":
         if getattr(tool, "name", "") in self._tools:
+            raise AgentError(f"tool already registered: {tool.name!r}")
