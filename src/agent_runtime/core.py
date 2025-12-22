@@ -85,3 +85,5 @@ class ToolRegistry:
             raise AgentError(f"tool already registered: {tool.name!r}")
         self._tools[tool.name] = tool
         return self
+
+    @property
