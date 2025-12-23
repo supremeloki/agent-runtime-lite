@@ -87,3 +87,4 @@ class ToolRegistry:
         return self
 
     @property
+    def tool_names(self) -> tuple[str, ...]:
