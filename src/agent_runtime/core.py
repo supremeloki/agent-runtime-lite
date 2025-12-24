@@ -90,3 +90,4 @@ class ToolRegistry:
     def tool_names(self) -> tuple[str, ...]:
         return tuple(sorted(self._tools))
 
+    def execute(self, tool_name: str, arguments: dict[str, Any]) -> ToolResult:
