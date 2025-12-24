@@ -88,3 +88,5 @@ class ToolRegistry:
 
     @property
     def tool_names(self) -> tuple[str, ...]:
+        return tuple(sorted(self._tools))
+
