@@ -93,3 +93,5 @@ class ToolRegistry:
     def execute(self, tool_name: str, arguments: dict[str, Any]) -> ToolResult:
         tool = self._tools.get(tool_name)
         if tool is None:
+            raise UnknownToolError(tool_name)
+        started = time.perf_counter()
