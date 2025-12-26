@@ -95,3 +95,4 @@ class ToolRegistry:
         if tool is None:
             raise UnknownToolError(tool_name)
         started = time.perf_counter()
+        try:
