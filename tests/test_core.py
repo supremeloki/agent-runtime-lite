@@ -63,3 +63,4 @@ def test_scripted_agent_runs_to_completion(registry):
     assert all(step.success for step in trace.steps)
     assert trace.final_answer == "stored:answer"
 
+
