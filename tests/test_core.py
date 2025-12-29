@@ -65,3 +65,4 @@ def test_scripted_agent_runs_to_completion(registry):
 
 
 def test_planner_exhaustion_returns_last_output(registry):
+    planner = ScriptedPlanner([
