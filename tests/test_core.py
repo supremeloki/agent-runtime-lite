@@ -64,3 +64,4 @@ def test_scripted_agent_runs_to_completion(registry):
     assert trace.final_answer == "stored:answer"
 
 
+def test_planner_exhaustion_returns_last_output(registry):
