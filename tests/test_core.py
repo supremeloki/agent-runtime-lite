@@ -68,3 +68,4 @@ def test_planner_exhaustion_returns_last_output(registry):
     planner = ScriptedPlanner([
         ("calculator", {"op": "add", "a": 1, "b": 1}),
     ])
+    trace = ReActAgent(registry, planner).run("add numbers")
