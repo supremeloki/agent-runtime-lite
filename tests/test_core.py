@@ -70,3 +70,4 @@ def test_planner_exhaustion_returns_last_output(registry):
     ])
     trace = ReActAgent(registry, planner).run("add numbers")
     assert trace.final_answer == 2.0
+
