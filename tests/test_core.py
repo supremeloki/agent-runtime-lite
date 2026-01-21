@@ -75,3 +75,4 @@ def test_planner_exhaustion_returns_last_output(registry):
 def test_max_steps_enforced_when_planner_never_stops(registry):
     class Endless:
         calls = 0
+
