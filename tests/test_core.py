@@ -76,3 +76,4 @@ def test_max_steps_enforced_when_planner_never_stops(registry):
     class Endless:
         calls = 0
 
+        def next_step(self, goal, history):
