@@ -80,3 +80,4 @@ def test_max_steps_enforced_when_planner_never_stops(registry):
             self.calls += 1
             return ("calculator", {"op": "add", "a": self.calls, "b": 0})
 
+    with pytest.raises(MaxStepsExceededError):
