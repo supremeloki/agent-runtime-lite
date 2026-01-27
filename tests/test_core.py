@@ -82,3 +82,5 @@ def test_max_steps_enforced_when_planner_never_stops(registry):
 
     with pytest.raises(MaxStepsExceededError):
         ReActAgent(registry, Endless(), max_steps=4).run("loop forever")
+
+
