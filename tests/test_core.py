@@ -84,3 +84,4 @@ def test_max_steps_enforced_when_planner_never_stops(registry):
         ReActAgent(registry, Endless(), max_steps=4).run("loop forever")
 
 
+def test_unknown_tool_in_plan_aborts_trace(registry):
