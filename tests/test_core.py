@@ -86,3 +86,4 @@ def test_max_steps_enforced_when_planner_never_stops(registry):
 
 def test_unknown_tool_in_plan_aborts_trace(registry):
     planner = ScriptedPlanner([("teleport", {})])
+    trace = ReActAgent(registry, planner).run("go somewhere")
