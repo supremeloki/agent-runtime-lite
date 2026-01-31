@@ -88,3 +88,4 @@ def test_unknown_tool_in_plan_aborts_trace(registry):
     planner = ScriptedPlanner([("teleport", {})])
     trace = ReActAgent(registry, planner).run("go somewhere")
     assert not trace.steps[0].success
+    assert "aborted" in trace.final_answer
