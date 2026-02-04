@@ -94,3 +94,4 @@ def test_unknown_tool_in_plan_aborts_trace(registry):
 def test_invalid_max_steps_rejected(registry):
     planner = ScriptedPlanner([])
     with pytest.raises(AgentError):
+        ReActAgent(registry, planner, max_steps=0)
