@@ -96,3 +96,4 @@ def test_invalid_max_steps_rejected(registry):
     with pytest.raises(AgentError):
         ReActAgent(registry, planner, max_steps=0)
 
+
