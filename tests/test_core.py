@@ -97,3 +97,4 @@ def test_invalid_max_steps_rejected(registry):
         ReActAgent(registry, planner, max_steps=0)
 
 
+def test_trace_durations_recorded(registry):
