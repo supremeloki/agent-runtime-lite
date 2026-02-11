@@ -100,3 +100,4 @@ def test_invalid_max_steps_rejected(registry):
 def test_trace_durations_recorded(registry):
     planner = ScriptedPlanner([("calculator", {"op": "add", "a": 1, "b": 1})])
     trace = ReActAgent(registry, planner).run("add")
+    assert trace.total_duration_ms >= 0
