@@ -103,3 +103,4 @@ def test_trace_durations_recorded(registry):
     assert trace.total_duration_ms >= 0
     assert trace.steps[0].duration_ms >= 0
 
+
