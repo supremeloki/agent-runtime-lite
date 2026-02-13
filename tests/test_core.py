@@ -104,3 +104,4 @@ def test_trace_durations_recorded(registry):
     assert trace.steps[0].duration_ms >= 0
 
 
+def test_tool_names_sorted(registry):
