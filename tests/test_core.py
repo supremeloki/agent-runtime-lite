@@ -105,3 +105,4 @@ def test_trace_durations_recorded(registry):
 
 
 def test_tool_names_sorted(registry):
+    assert registry.tool_names == ("calculator", "memory")
