@@ -96,3 +96,76 @@ class ToolRegistry:
             raise UnknownToolError(tool_name)
         started = time.perf_counter()
         try:
+            output = tool.run(arguments)
+            success = True
+        except Exception as exc:
+            output = str(exc)
+            success = False
+        duration = (time.perf_counter() - started) * 1000
+        return ToolResult(tool=tool_name, output=output, success=success,
+                          duration_ms=round(duration, 3))
+
+
+class StepPlanner(Protocol):
+    def next_step(self, goal: str, history: Sequence[ToolResult]) -> tuple[str, dict[str, Any]] | None: ...
+
+
+class ScriptedPlanner:
+    def __init__(self, script: Sequence[tuple[str, dict[str, Any]]]) -> None:
+        self._script = list(script)
+
+    def next_step(self, goal: str,
+                  history: Sequence[ToolResult]) -> tuple[str, dict[str, Any]] | None:
+        executed = sum(1 for result in history if result.success)
+        if executed >= len(self._script):
+            return None
+        return self._script[executed]
+
+
+@dataclass
+class AgentRunTrace:
+    goal: str
+    steps: list[ToolResult] = field(default_factory=list)
+    final_answer: str = ""
+    total_duration_ms: float = 0.0
+
+
+class ReActAgent:
+    def __init__(self, registry: ToolRegistry, planner: StepPlanner,
+                 max_steps: int = 10) -> None:
+        if max_steps < 1:
+            raise AgentError("max_steps must be >= 1")
+        self._registry = registry
+        self._planner = planner
+        self._max_steps = max_steps
+
+    def run(self, goal: str) -> AgentRunTrace:
+        trace = AgentRunTrace(goal=goal)
+        started = time.perf_counter()
+        observations: list[ToolResult] = []
+        for _ in range(self._max_steps):
+            step = self._planner.next_step(goal, observations)
+            if step is None:
+                break
+            tool_name, arguments = step
+            try:
+                result = self._registry.execute(tool_name, arguments)
+            except UnknownToolError as exc:
+                trace.steps.append(ToolResult(
+                    tool=tool_name, output=str(exc), success=False, duration_ms=0.0,
+                ))
+                trace.final_answer = f"aborted: {exc}"
+                break
+            observations.append(result)
+            trace.steps.append(result)
+            if not result.success:
+                trace.final_answer = f"failed at tool {tool_name!r}"
+                break
+        else:
+            raise MaxStepsExceededError(self._max_steps)
+
+        if not trace.final_answer:
+            successful = [r.output for r in observations if r.success]
+            trace.final_answer = successful[-1] if successful else "no steps executed"
+        trace.total_duration_ms = round((time.perf_counter() - started) * 1000, 3)
+        return trace
